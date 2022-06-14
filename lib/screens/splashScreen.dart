@@ -21,11 +21,15 @@ class _MySplashScreenState extends State<MySplashScreen> {
   @override
   Widget build(BuildContext context) {
     return EasySplashScreen(
-      logo: Image.network(
-          'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/25425fb2-bc94-4349-8d8a-6eabb4d6ccd2/dbww48m-e74bf3fc-83e1-469d-bfd4-0c64c6db2965.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI1NDI1ZmIyLWJjOTQtNDM0OS04ZDhhLTZlYWJiNGQ2Y2NkMlwvZGJ3dzQ4bS1lNzRiZjNmYy04M2UxLTQ2OWQtYmZkNC0wYzY0YzZkYjI5NjUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.0xUgvsA4QUzPfzS05r9zSAaekcd7Sh0xXf5eb2EN3E0'),
+      backgroundColor: Theme.of(context).colorScheme.background,
+      loaderColor: Theme.of(context).colorScheme.secondary,
+      logo: Image.asset(
+        'assets/imgs/food.png',
+        width: MediaQuery.of(context).size.width / 2,
+      ),
       logoSize: MediaQuery.of(context).size.width / 2,
       title: const Text(
-        "Splash Screen",
+        "Meal App",
         style: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,

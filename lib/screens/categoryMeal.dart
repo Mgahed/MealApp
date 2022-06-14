@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../dummy_data.dart';
 import '../widgets/drawerWidget.dart';
@@ -12,6 +13,27 @@ class CategoryMeal extends StatefulWidget {
 }
 
 class _CategoryMealState extends State<CategoryMeal> {
+  bool _isGlutenFree = false;
+  bool _isLactoseFree = false;
+  bool _isVegan = false;
+  bool _isVegetarian = false;
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isGlutenFree = prefs.getBool('isGlutenFree') ?? false;
+      _isLactoseFree = prefs.getBool('isLactoseFree') ?? false;
+      _isVegan = prefs.getBool('isVegan') ?? false;
+      _isVegetarian = prefs.getBool('isVegetarian') ?? false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final category =
@@ -20,7 +42,19 @@ class _CategoryMealState extends State<CategoryMeal> {
     final categoryId = category['id'];
 
     final meals = DUMMY_MEALS.where((meal) {
-      return meal.categories.contains(categoryId);
+      return meal.categories.contains(categoryId) &&
+          (_isGlutenFree
+              ? meal.isGlutenFree == true
+              : (meal.isGlutenFree == true || meal.isGlutenFree == false)) &&
+          (_isLactoseFree
+              ? meal.isLactoseFree == true
+              : (meal.isLactoseFree == true || meal.isLactoseFree == false)) &&
+          (_isVegan
+              ? meal.isVegan == true
+              : (meal.isVegan == true || meal.isVegan == false)) &&
+          (_isVegetarian
+              ? meal.isVegetarian == true
+              : (meal.isVegetarian == true || meal.isVegetarian == false));
     }).toList();
 
     return Scaffold(

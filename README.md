@@ -1,5 +1,10 @@
 # Meal App
-
 ## Meal App made with flutter.
 
-## More description and screens will be added later.
+### Description:
+Simple meal app with dummy data (for practicing purposes only).
+
+### Screenshots:
+|      Light       | Dark  |
+|:----------------:|:-----:|
+| Light screenshot | Dark screenshot |
